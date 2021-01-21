@@ -7,7 +7,7 @@ import './App.css';
 function App() {
   return (
     <Switch>
-      <div className="App">
+      <div className="d-flex fluid w-100">
         <Route exact path="/">
           <Redirect to="/login" />
         </Route>

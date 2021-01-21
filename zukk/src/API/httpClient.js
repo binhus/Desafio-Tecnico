@@ -29,7 +29,13 @@ const fetchLogin = (data) => fetch(`${localhostURL}/`, myInitWithBody(data, null
 const Auth = () => fetch(`${localhostURL}/auth`, myInit(getToken()))
 .catch((err) => Promise.reject(err));
 
+const fetchClients = () => fetch(`${localhostURL}/clients`, myInit()).then((response) => response
+  .json()
+  .then((json) => Promise.resolve(json))
+  .catch((err) => Promise.reject(err)));
+
 module.exports = {
+  fetchClients,
   fetchLogin,
   Auth,
 };

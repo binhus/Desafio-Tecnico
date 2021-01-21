@@ -9,6 +9,8 @@ const Login = ({history}) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const [isDisabled, setIsDisabled] = useState(true);
+  const [btnStyle, setBtnStyle] = useState("btn btn-block btn-secondary");
+
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -33,6 +35,7 @@ const Login = ({history}) => {
     const regexPassword = /^[^d_]{4,25}$/;
     if (regexEmail.test(emailParam) && regexPassword.test(passwordParam)) {
       setIsDisabled(false);
+      setBtnStyle("btn btn-success")
     } else {
       setIsDisabled(true);
     }
@@ -43,22 +46,30 @@ const Login = ({history}) => {
   }, [email, password]);
 
   return (
-    <div>
+    <div className="d-flex flex-column align-items-center justify-content-center w-100">
       <img src={ logo } className="App-logo" alt="logo" />
       <form onSubmit={ handleLogin }>
-        <input
-          type="text"
-          placeholder="Endereço de e-mail"
-          onChange={ (event) => setEmail(event.target.value) }
-        />
-        <input
-          type="password"
-          placeholder="Senha"
-          onChange={ (event) => setPassword(event.target.value) }
-        />
-        <button disabled={ isDisabled } type="submit">
-          Entrar
-        </button>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Endereço de e-mail"
+            onChange={ (event) => setEmail(event.target.value) }
+          />
+        </div>
+        <div>
+          <input
+            className="input"
+            type="password"
+            placeholder="Senha"
+            onChange={ (event) => setPassword(event.target.value) }
+          />
+        </div>
+        <br />
+        <div className="">
+          <button className={btnStyle} disabled={ isDisabled } type="submit">
+            Entrar
+          </button>
+        </div>
       </form>
       {error && (<p>{error}</p>) }
     </div>

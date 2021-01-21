@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const signUpSignIn = require('./Controllers/signUpSignInController');
+const clientsController = require('./Controllers/clientsController')
 const middlewares = require('./Middlewares/auth');
 
 const PORT = process.env.PORT || 3001
@@ -11,6 +12,7 @@ app.use(cors());
 app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', signUpSignIn);
+app.use('/clients', clientsController)
 
 const errorMiddleware = (err, _req, res, _next) => {
   console.error(err);
