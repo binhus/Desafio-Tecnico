@@ -34,8 +34,20 @@ const fetchClients = () => fetch(`${localhostURL}/clients`, myInit()).then((resp
   .then((json) => Promise.resolve(json))
   .catch((err) => Promise.reject(err)));
 
+const fetchClientById = (id) => fetch(`${localhostURL}/clients/${id}`, myInit()).then((response) => response
+.json()
+.then((json) => Promise.resolve(json))
+.catch((err) => Promise.reject(err)));
+
+const fetchUpdateClient = (data, id) => fetch(`${localhostURL}/clients/${id}`, myInitWithBody(data, null, 'PUT')).then((response) => response
+.json()
+.then((json) => Promise.resolve(json))
+.catch((err) => Promise.reject(err)));
+
 module.exports = {
   fetchClients,
+  fetchUpdateClient,
+  fetchClientById,
   fetchLogin,
   Auth,
 };

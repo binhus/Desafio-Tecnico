@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Login from './Components/login';
 import Clients from './Components/Clients';
 import './App.css';
+import EditClient from './Components/EditClient';
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
           <Redirect to="/login" />
         </Route>
         <Route exact path="/login" component={Login} />
-        <Route path="/app" component={Clients} />
+        <Route path="/clients" component={Clients} />
+        <Route path="/client/:id" component={EditClient} />
       </div>
     </Switch>
   );

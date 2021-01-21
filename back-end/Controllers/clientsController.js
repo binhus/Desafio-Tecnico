@@ -11,7 +11,11 @@ clientsController.get('/', clientsServices.getAllClients, (req, res) => { // obt
   res.status(200).json(req.data)
 });
 
-clientsController.put('/', (req, res) => { // atualizar cliente
+clientsController.get('/:id', clientsServices.getClientById ,(req, res) => { // obter cliente por id
+  res.status(200).json(req.data)
+});
+
+clientsController.put('/:id', clientsServices.update ,(req, res) => { // atualizar cliente
   res.status(200).json(req.data)
 });
 

@@ -22,7 +22,7 @@ const Login = ({history}) => {
       if (response.token) {
         login(response.token);
         setError('Aguarde o login');
-        history.push('/app')
+        history.push('/clients')
       }
       if (response.message) {
         setError('Você não conseguiu fazer o login, verifique seus dados');
