@@ -45,7 +45,7 @@ const CreateClient = ({ history, match }) => {
     <Restrict>
       <div className="card bg-light d-flex flex-row justify-content-center mb-3">
         <div className="w-75 p3">
-          <h1 className="card-text text-center">Criar Cliente</h1>
+          <h5 className="card-text display-4 text-center">Criar Cliente</h5>
           <div className="d-flex flex-column align-items-center justify-content-center w-100">
             <div className="input-group mb-3">
               <input
