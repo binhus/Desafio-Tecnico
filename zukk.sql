@@ -32,5 +32,5 @@ INSERT INTO users (id, name, email, password, cep) VALUES
 
 INSERT INTO clients (id, name, address, neghborhood, state, phone, email, cep) VALUES
     ('1', 'Robson', 'rua dos peixes', 'jardim Dourado', 'Santa Catarina', 48996387342, 'eng.robsonwilli@gmail.com', 88047210),
-    ('1', 'teste', 'rua dos tubarões', 'jardim Verde', 'São Paulo', 48996387342, 'test@test.com', 88047215);
+    ('2', 'teste', 'rua dos tubarões', 'jardim Verde', 'São Paulo', 48996387342, 'test@test.com', 88047215);
 
