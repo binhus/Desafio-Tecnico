@@ -6,18 +6,14 @@ import httpClient from '../API/httpClient';
 const Restrict = ({ children }) => {
   const [isLogged, setIsLogged] = useState(true);
 
-  // coloquei uma condicional para '/products',
-  // estava causando loop infinito entre '/products' e '/login';
 
   const authentication = async () => {
     try {
       const confirmation = await httpClient.Auth();
-      console.log(confirmation);
     if (confirmation.status === 401) {
       setIsLogged(false);
     }
     } catch (error) {
-      console.log(error);
       setIsLogged(false);
     }
   };

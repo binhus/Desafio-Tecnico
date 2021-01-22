@@ -1,6 +1,6 @@
 const connection = require('./connection');
 
-const createClient = (data) => connection.query('INSERT INTO clients (name, address, neighborhood, state, phone, email, cep) VALUES (?)  ', [data]);
+const createClient = (name, address, neighborhood, state, phone, email, cep) => connection.query('INSERT INTO clients (name, address, neighborhood, state, phone, email, cep) VALUES (?,?,?,?,?,?,?)  ', [name, address, neighborhood, state, phone, email, cep]);
 
 const updateClient = (name, address, neighborhood, state, phone, email, cep, id) => connection.query('UPDATE clients SET name = ?, address = ?, neighborhood = ?, state = ?, phone = ?, email = ?, cep = ? WHERE id = ?', [name, address, neighborhood, state, phone, email, cep, id]);
 

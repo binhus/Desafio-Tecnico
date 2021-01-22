@@ -25,7 +25,16 @@ const EditClient = ({ history, match }) => {
   const [cep, setCep] = useState(null);
   const [message, setMessage] = useState(null);
 
-  const updateHandleButton = async () => {
+  const style = {
+    "min-height": "70%",
+  };
+
+  const handleDeleteButton = async () => {
+    const exclude = await httpRequest.fetchDeleteClient(match.params.id);
+    setMessage(exclude.message);
+  }
+
+  const updateHandleButtonEdit = async () => {
     const update = await httpRequest.fetchUpdateClient(
       { name, address, neighborhood, email, state, phone, cep },
       match.params.id,
@@ -37,14 +46,12 @@ const EditClient = ({ history, match }) => {
       fetchClient();
     }
   });
-  console.log(client);
-  console.log(name);
   return (
     <Restrict>
       <div>
         <h1>Editar Usuário</h1>
         {client ? (
-          <div className="d-flex flex-column">
+          <div className="d-flex flex-column align-items-center justify-content-center w-100" style={style}>
             <input
               className="input"
               value={name}
@@ -87,8 +94,8 @@ const EditClient = ({ history, match }) => {
         <div className="d-flex flex-column ">
           <button
             type="button"
-            className="btn btn-danger btn-block"
-            onClick={() => updateHandleButton()}
+            className="btn btn-success btn-block"
+            onClick={() => updateHandleButtonEdit()}
           >
             Salvar
           </button>
@@ -101,6 +108,15 @@ const EditClient = ({ history, match }) => {
           </button>
         </div>
         {message && <p>{message}</p>}
+        <div className="d-flex flex-end">
+          <button
+              type="button"
+              className="btn btn-danger btn-block"
+              onClick={() => handleDeleteButton()}
+            >
+              Excluir
+            </button>
+        </div>
       </div>
     </Restrict>
   );

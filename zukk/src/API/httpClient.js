@@ -11,6 +11,13 @@ const myInit = (token) => ({
   },
 });
 
+const myInitNoCORS = () => ({
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
 const myInitWithBody = (data, token, method) => ({
   mode: 'cors',
   method: method,
@@ -19,6 +26,13 @@ const myInitWithBody = (data, token, method) => ({
     authorization: token || '',
   },
   body: JSON.stringify(data) || {},
+});
+const myInitDelete = () => ({
+  mode: 'cors',
+  method: 'DELETE',
+  headers: {
+    'Content-Type': 'application/json',
+  },
 });
 
 const fetchLogin = (data) => fetch(`${localhostURL}/`, myInitWithBody(data, null, 'POST')).then((response) => response
@@ -44,9 +58,26 @@ const fetchUpdateClient = (data, id) => fetch(`${localhostURL}/clients/${id}`, m
 .then((json) => Promise.resolve(json))
 .catch((err) => Promise.reject(err)));
 
+const fetchDeleteClient = (id) => fetch(`${localhostURL}/clients/${id}`, myInitDelete()).then((response) => response
+.json()
+.then((json) => Promise.resolve(json))
+.catch((err) => Promise.reject(err)));
+
+const fetchCreateClient = (data) => fetch(`${localhostURL}/clients`, myInitWithBody(data, null, 'POST')).then((response) => response
+.json()
+.then((json) => Promise.resolve(json))
+.catch((err) => Promise.reject(err)));
+
+const fetchCepAPI = (cep) => fetch(`https://viacep.com.br/ws/${cep}/json/`, myInitNoCORS()).then((response) => response.json())
+.then((json) => Promise.resolve(json))
+.catch((err) => Promise.reject(err));
+
 module.exports = {
+  fetchCepAPI,
+  fetchCreateClient,
   fetchClients,
   fetchUpdateClient,
+  fetchDeleteClient,
   fetchClientById,
   fetchLogin,
   Auth,

@@ -58,3 +58,8 @@ para iniciar o front-end digite em seu terminal na pasta zukk o seguinte comando
 
 // terminal na pasta zukk.
 $ npm start
+
+### Login no App.
+
+foram feitos 2 usuários: 'test@test.com' com senha: test123 e 'admin@admin.com.br' com senha: 123456.
+

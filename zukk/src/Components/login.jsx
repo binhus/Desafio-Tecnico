@@ -18,7 +18,6 @@ const Login = ({history}) => {
       setError('Preencha e-mail e senha para continuar!');
     } else {
       const response = await fetchLogin({ email, password });
-      console.log(response);
       if (response.token) {
         login(response.token);
         setError('Aguarde o login');
@@ -35,7 +34,7 @@ const Login = ({history}) => {
     const regexPassword = /^[^d_]{4,25}$/;
     if (regexEmail.test(emailParam) && regexPassword.test(passwordParam)) {
       setIsDisabled(false);
-      setBtnStyle("btn btn-success")
+      setBtnStyle("btn btn-success btn-block")
     } else {
       setIsDisabled(true);
     }
